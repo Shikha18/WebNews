@@ -20,26 +20,30 @@ const Api = () => {
         getData();
     }, []);
 
+    console.log(obj, setObj);
+
     return (
         <div className={style.container}>
             {
-                Array.isArray(obj) ? obj?.map(item => (
+                Array.isArray(obj) ? obj?.map(item => {
+                    const {title, author, description, publishedAt, url, urlToImage, content} = item;
                     <div>
                         <div>
-                            <img src={item.urlToImage} />
+                            SHikh
+                            <img src={urlToImage} />
                         </div>
                         <div>
-                            <h4>{item.title}</h4>
-                            <h5>Written by: {item.author}</h5>
-                            <p>{item.content}</p>
-                            <p>{item.description}</p>
-                            <p>Published At: {item.publishedAt}</p>
+                            <h4>{title}</h4>
+                            <h5>Written by: {author}</h5>
+                            <p>{content}</p>
+                            <p>{description}</p>
+                            <p>Published At: {publishedAt}</p>
                             {/* Can achieve this by react-router also */}
-                            <a href={item.url} target="_blank">Click here for Full news</a>
+                            <a href={url} target="_blank">Click here for Full news</a>
 
                         </div>
                     </div>
-                )) : []
+}) : []
             }
         </div>
     )
